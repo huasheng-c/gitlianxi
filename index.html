@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mubanyinqing</title>
+   
+    <script src="../jQuery/jQuery.min.js"></script>
+    <script src="./template-web.js"></script>
+    
+</head>
+<body>
+    <ul id="nav"></ul>  <!-- 父元素 -->
+
+
+    <script type="text/html" id="shuju">  <!-- 2.定义模板和id -->
+        <li>{{name}}</li>
+        <li>{{  age}}</li>
+        <li>{{sex  }}</li>
+    </script>
+
+    
+    <script>
+        var data = {name:'zhang',age:18,sex:'man'}
+        var ui = template('shuju',data)
+        document.querySelector('#nav').innerHTML = ui
+        
+
+        function template(id,data) {
+            var str = $('#' + id).html()
+            
+            var ze = /{{\s*([a-zA-Z]+)\s*}}/
+            ze.exec(str)
+            var kong = null
+            while(kong = ze.exec(str)) {
+                str = str.replace(kong[0],data[kong[1]])
+            }
+
+            return str
+
+        }
+        
+    </script>
+
+</body>
+</html>
