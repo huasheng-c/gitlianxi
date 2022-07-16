@@ -21,27 +21,7 @@
     </script>
 
     
-    <script>
-        var data = {name:'zhang',age:18,sex:'man'}
-        var ui = template('shuju',data)
-        document.querySelector('#nav').innerHTML = ui
-        
-
-        function template(id,data) {
-            var str = $('#' + id).html()
-            
-            var ze = /{{\s*([a-zA-Z]+)\s*}}/
-            ze.exec(str)
-            var kong = null
-            while(kong = ze.exec(str)) {
-                str = str.replace(kong[0],data[kong[1]])
-            }
-
-            return str
-
-        }
-        
-    </script>
+ 
 
 </body>
 </html>
